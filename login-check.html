@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Check</title>
+</head>
+<body>
+    <script>
+        // Cara 1
+        // let visitor = prompt("Who's there?");
+        // switch(visitor) {
+        //     case null:
+        //         alert("Canceled");
+        //         break;
+        //     case "Admin":
+        //         let password = prompt("Password?");
+        //         switch(password) {
+        //             case null:
+        //                 alert("Canceled");
+        //                 break;
+        //             case "TheMaster":
+        //                 alert("Welcome!");
+        //                 break;
+        //             default:
+        //                 alert("Wrong password");
+        //                 break;
+        //         }
+        //         break;
+        //     default:
+        //         alert("I don't know you")
+        // }
+
+        // Cara 2
+        let visitor = prompt("Who's there?");
+        if (visitor == "Admin") {
+            let password = prompt("Password?");
+            if (password == "TheMaster") {
+                alert("Welcome");
+            } else if (password == null) {
+                alert("Canceled");
+            } else {
+                alert("Wrong password");
+            }
+        } else if (visitor == null) {
+            alert("Canceled");
+        } else {
+            alert("I don't know you");
+        }
+    </script>
+</body>
+</html>
