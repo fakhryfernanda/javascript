@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+</head>
+<body>
+    <!-- Method 1 -->
+    <button onclick="alert('Hello, World!')">Click me!</button>
+
+    <!-- Method 2 -->
+    <button id="btn">Just click me!</button>
+
+    <!-- Method 3 -->
+    <button id="btn3">Click me, please</button>
+    
+    <!-- Change color -->
+    <br>
+    <button class="red">Red</button>
+    <button class="blue">Blue</button>
+
+    <script>
+        // Alert Function
+        
+        // Method 2
+        const btn = document.querySelector('#btn');
+        btn.onclick = name => alert(`Hello, ${'Fakhry'}!`);
+        
+
+        // Method 3
+        const btn3 = document.querySelector('#btn3');
+        btn3.addEventListener('click', () => {
+            alert('Ahoy!');
+        });
+
+        // Change color
+        // const body = document.querySelector('body');
+        const redButton = document.querySelector('.red');
+        const blueButton = document.querySelector('.blue');
+
+        // Change the color of button
+        // redButton.addEventListener('click', e => e.target.style.backgroundColor = 'red');
+        // blueButton.addEventListener('click', e => e.target.style.backgroundColor = 'blue');
+
+        // Change the color of body
+        const changeColor = (element, color) => element.style.backgroundColor = color;
+        const body = document.querySelector('body');
+        redButton.addEventListener('click', () => changeColor(body, 'red'));
+        blueButton.addEventListener('click', () => changeColor(body, 'blue'));
+
+    </script>
+</body>
+</html>
