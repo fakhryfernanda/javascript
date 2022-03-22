@@ -1,0 +1,34 @@
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.container {
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.clear {
+    width: 50px;
+    margin: 0 auto;
+    padding: 8px 24px;
+    background-color: blue;
+    color: white;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.clear:hover {
+    cursor: pointer;
+}
+
+.clear:active {
+    /* box-shadow: 1px 1px 10px black; */
+    padding: 7px 21px;
+}
