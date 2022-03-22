@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation and Events</title>
+    <style>
+        #container {
+            padding: 20px;
+            border: 1px solid red;
+        }
+
+        .display {
+            width: 200px;
+            height: 100px;
+            border: 1px solid blue;
+            margin-bottom: 10px;
+        }
+
+        .control {
+            width: 200px;
+            height: 300px;
+            border: 1px solid green;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="display"></div>
+        <div class="control"></div>
+    </div>
+
+    <script>
+        // Select element
+        const container = document.querySelector('#container');
+
+        // Create element
+        const div = document.createElement('div');
+
+
+        // Adding text content
+        div.textContent = 'Hello, World!';
+
+        // Append child
+        container.appendChild(div);
+        
+        // Adding inline style (in many ways)
+        div.style.marginTop = '20px';
+        div.style['margin-left'] = '50px';
+        div.style.width = '300px';
+        div.style.setProperty('height', '100px')
+        div.style.setProperty('border', '5px solid magenta');
+
+        // perintah berikut tidak dapat digunakan bersamaand dengan perintah lain
+        // div.style.cssText = 'height: 100px;';
+        // div.setAttribute('style', 'border: 1px solid red; width: 100px; height: 300px;');
+
+        // Editing attribute
+        div.setAttribute('id', 'theDiv');
+
+        // Exercises
+        
+        // 1. Add a <p> with red text that says “Hey I’m red!”
+        const para = document.createElement('p');
+        para.textContent = "Hey I'm red!";
+        para.style.cssText = 'color: red';
+        container.appendChild(para);
+
+        // 2. Add an <h3> with blue text that says “I’m a blue h3!”
+        const h3 = document.createElement('h3');
+        h3.textContent = "I'm a blue h3!";
+        h3.setAttribute('style', 'color: blue');
+        container.appendChild(h3);
+
+        // 3. Add a <div> with a black border and pink background color 
+        //    with the following elements inside of it:
+        //    a. another <h1> that says “I’m in a div”
+        //    b. a <p> that says “ME TOO!”
+        const specialDiv = document.createElement('div');
+        specialDiv.style.cssText = 'border: 1px solid black; background-color: pink;';
+        const h1 = document.createElement('h1');
+        h1.innerText = "I'm in a div";
+        const anotherPara = document.createElement('p');
+        anotherPara.innerText = 'ME TOO!';
+        specialDiv.appendChild(h1);
+        specialDiv.appendChild(anotherPara);
+        container.appendChild(specialDiv);
+
+
+
+    </script>
+</body>
+</html>
