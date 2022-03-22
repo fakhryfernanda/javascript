@@ -1,5 +1,15 @@
 function playGame() {
-    const numRound = Number(prompt("How many round do you want to play?"))
+
+    let numRound = prompt("How many round do you want to play?\n(must be greater than 0)");
+
+    while (!(Number(numRound) > 0)) {
+        numRound = prompt("Insert a valid number\nHow many round do you want to play?\n(must be greater than 0)");
+        if (numRound === "quit" || numRound === null) {
+            return "Game exited";
+        }
+    }
+
+    numRound = Number(numRound);
 
     let playerScore = 0;
     let computerScore = 0;
@@ -55,7 +65,7 @@ function playGame() {
                     computerWins();
                     break;
             }
-        } else { // playerSelection == "scissor"
+        } else if (playerSelection == "scissor") {
             switch(computerSelection) {
                 case "rock" :
                     computerWins();
@@ -90,8 +100,17 @@ function playGame() {
         console.log(`Round ${round}`);
         playRound(playerSelection, computerSelection);
         printScore();
-        console.log("\n")
+        console.log("\n");
     }
 
     printScore(isCompleted = true);
+    
+    // Determine the winner
+    if (playerScore > computerScore) {
+        return "You win!";
+    } else if (playerScore < computerScore) {
+        return "You lose!"
+    } else {
+        return "The game is tied"
+    }
 }
