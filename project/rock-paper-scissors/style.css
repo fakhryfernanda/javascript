@@ -7,26 +7,51 @@
     margin: auto;
 }
 
+.button {
+    /* margin: 0; */
+    background-color: red;
+    color: white;
+    font-size: 24px;
+    font-family: sans-serif;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+.button:active {
+    box-shadow: 0 0 5px -1px rgba(0,0,0,0.6);
+}
+
 body {
     /* height: 100vh; */
+    background-color: #ff66ff
+}
+
+/* HOMEPAGE */
+
+.homepage {
+    visibility: visible;
     display: flex;
     flex-direction: column;
     gap: 25px;
-    /* justify-content: center; */
+
 }
 
-h1 {
+.homepage h1 {
     text-align: center;
 }
 
 #logo {
     width: 500px;
     height: 300px;
-    border: 1px solid magenta;
+    border: 1px solid blue;
     color: red;
 }
 
-#start-button {
+.start-button {
     text-align: center;
     font-size: 24px;
     font-family: sans-serif;
@@ -36,10 +61,36 @@ h1 {
     border-radius: 10px;
 }
 
-#start-button:hover {
-    cursor: pointer;
+/* SELECT ROUNDS */
+.select-rounds {
+    visibility: hidden;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    
 }
 
-#start-button:active {
-    box-shadow: 0 0 5px -1px rgba(0,0,0,0.6);
+.rounds {
+    margin: 0;
+    background-color: red;
+    color: white;
+    font-size: 24px;
+    font-family: sans-serif;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+/* PLAYING PAGE */
+.playing-page {
+    visibility: hidden;
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    gap: 25px;
+}
+
+.play {
+    margin: 0;
+    width: 100px;
+    text-align: center;
 }
