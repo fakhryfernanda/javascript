@@ -15,7 +15,19 @@ for (let i = 0; i < 256; i++) {
     container.appendChild(div);
 };
 
-let clear = false;
-while (!clear) {
-    
-}
+
+// Change background color when hovering
+
+const grids = document.querySelectorAll('.grid');
+grids.forEach(grid => {
+    grid.addEventListener('mouseover', e => {
+        e.target.style.backgroundColor = 'red';
+        // console.log(e.target);
+    });
+});
+
+// Clear button
+const clearButton = document.querySelector('.clear');
+clearButton.addEventListener('click', () => {
+    grids.forEach(grid => grid.style.backgroundColor = 'white');
+});
