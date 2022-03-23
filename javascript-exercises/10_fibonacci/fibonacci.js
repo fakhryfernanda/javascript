@@ -1,4 +1,8 @@
 const fibonacci = function(n) {
+    if (n < 0) {
+        return 'OOPS'
+    }
+
     let preValue = 1;
     let curValue = 1;
     let temp;
