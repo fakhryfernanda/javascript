@@ -8,8 +8,11 @@ body {
 
 .container {
     margin: 0 auto;
+    /* padding: 10px; */
+    border: 1px solid blue;
     display: flex;
     flex-wrap: wrap;
+    /* box-sizing: border-box; */
 }
 
 .clear {
