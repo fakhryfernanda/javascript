@@ -1,14 +1,30 @@
-/* img {
-    width: 500px;
-    height: 300px;
-} */
+/* General styling */
 
-* {
-    margin: auto;
+body {
+    height: 100vh;
+    margin: 0;
+    background-color: pink;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    border: 1px solid black;
+    padding: 20px 50px;
+}
+
+main h1 {
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 .button {
-    /* margin: 0; */
     background-color: red;
     color: white;
     font-size: 24px;
@@ -25,17 +41,14 @@
     box-shadow: 0 0 5px -1px rgba(0,0,0,0.6);
 }
 
-body {
-    /* height: 100vh; */
-    background-color: #ff66ff
-}
-
 /* HOMEPAGE */
 
 .homepage {
     visibility: visible;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 25px;
 
 }
@@ -44,14 +57,20 @@ body {
     text-align: center;
 }
 
-#logo {
+.homepage #logo {
     width: 500px;
     height: 300px;
-    border: 1px solid blue;
-    color: red;
+    border: 1px solid black;
+    font-size: 60px;
+    font-weight: bold;
+    font-family: sans-serif ;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.start-button {
+.homepage .start-button {
     text-align: center;
     font-size: 24px;
     font-family: sans-serif;
@@ -63,14 +82,13 @@ body {
 
 /* SELECT ROUNDS */
 .select-rounds {
-    visibility: hidden;
     display: flex;
     justify-content: center;
     gap: 50px;
     
 }
 
-.rounds {
+.select-rounds .rounds {
     margin: 0;
     background-color: red;
     color: white;
@@ -81,10 +99,9 @@ body {
 }
 
 /* PLAYING PAGE */
+
 .playing-page {
-    visibility: hidden;
     display: flex;
-    /* flex-direction: column; */
     justify-content: center;
     gap: 25px;
 }
@@ -93,4 +110,8 @@ body {
     margin: 0;
     width: 100px;
     text-align: center;
+}
+
+.playing-page {
+    /* display: none; */
 }
