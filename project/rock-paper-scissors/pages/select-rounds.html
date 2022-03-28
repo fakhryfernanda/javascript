@@ -6,16 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock-Paper-Scissors</title>
     <link rel="stylesheet" href="../style.css">
-    <script src="../script.js" defer></script>
+    <!-- <script src="../script.js" defer></script> -->
 </head>
 <body>
     <main>
         <h1>How many rounds do you want to play?</h1>
         <div class="select-rounds">
-            <div class="button rounds">3 rounds</div>
-            <div class="button rounds">5 rounds</div>
-            <div class="button rounds">7 rounds</div>
+            <div class="button rounds"><a href="playing-page.html">3 rounds</a></div>
+            <div class="button rounds"><a href="playing-page.html">5 rounds</a></div>
+            <div class="button rounds"><a href="playing-page.html">7 rounds</a></div>
         </div>
     </main>
+
+    <script>
+        const showNumber = number => console.log(number);
+
+        const buttons = document.querySelectorAll('.rounds');
+        let numRoundsUnused;
+        let numRounds;
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                numRoundsUnused = button.innerText[0];
+                sessionStorage.setItem("numRoundsUnused", numRoundsUnused);
+                // showNumber(numRoundsUnused);
+            });
+        });
+        
+    </script>
 </body>
 </html>
