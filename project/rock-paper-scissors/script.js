@@ -32,21 +32,40 @@ roundButtons.forEach(button => {
 // Playing page and playing info
 
 const plays = document.querySelectorAll('.playing-page .play');
-let theRound = Number(document.querySelector('.playing-page #the-round > span').innerText);
+const nextRound = document.createElement('div')
+nextRound.setAttribute('class', 'button next-round');
+nextRound.innerText = 'Next round'
+const theRound = document.querySelector('.playing-page #the-round > span');
+
+let countRound = Number(theRound.innerText)
 let playerSelection;
 let computerSelection;
 
 plays.forEach(button => {
     button.addEventListener('click', () => {
-        playingPage.style.display = 'none';
-        playingInfo.style.display = 'flex';
+        switchPage(playingPage, playingInfo);
 
         playerPlay(button);
-        setTimeout(() => computerPlay(), 700);
 
-        setTimeout(() => evaluate(playerSelection, computerSelection), 1000);
+        setTimeout(() => {
+            computerPlay();
+            setTimeout(() => {
+                evaluate(playerSelection, computerSelection);
+                setTimeout(() => {
+                    countRound++;
+                    theRound.innerText = countRound.toString();
+                    playingInfo.appendChild(nextRound);
+                }, 1000);
+            }, 1000);
+        }, 1000);
     });
 });
+
+nextRound.addEventListener('click', () => {
+    switchPage(playingInfo, playingPage);
+    playingInfo.innerHTML = '';
+});
+
 
 function playerPlay(button) {
     playerSelection = button.innerText.toLowerCase();
