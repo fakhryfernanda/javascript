@@ -11,7 +11,8 @@ const main = document.querySelector('main');
 const homepage = document.querySelector('.homepage');
 const selectRounds = document.querySelector('.select-rounds');
 const playingPage = document.querySelector('.playing-page');
-const playingInfo = document.querySelector('.playing-info')
+const playingInfo = document.querySelector('.playing-info');
+const result = document.querySelector('.result');
 
 // Homepage
 
@@ -32,10 +33,16 @@ roundButtons.forEach(button => {
 // Playing page and playing info
 
 const plays = document.querySelectorAll('.playing-page .play');
+
 const nextRound = document.createElement('div')
 nextRound.setAttribute('class', 'button next-round');
 nextRound.innerText = 'Next round'
+
 const theRound = document.querySelector('.playing-page #the-round > span');
+
+const seeResult = document.createElement('div')
+seeResult.setAttribute('class', 'button see-result');
+seeResult.innerText = 'See result';
 
 let countRound = Number(theRound.innerText)
 let playerSelection;
@@ -52,9 +59,13 @@ plays.forEach(button => {
             setTimeout(() => {
                 evaluate(playerSelection, computerSelection);
                 setTimeout(() => {
-                    countRound++;
-                    theRound.innerText = countRound.toString();
-                    playingInfo.appendChild(nextRound);
+                    if (countRound < numRounds) {
+                        countRound++;
+                        theRound.innerText = countRound.toString();
+                        playingInfo.appendChild(nextRound);                            
+                    } else {
+                        playingInfo.appendChild(seeResult);
+                    }
                 }, 1000);
             }, 1000);
         }, 1000);
@@ -66,6 +77,19 @@ nextRound.addEventListener('click', () => {
     playingInfo.innerHTML = '';
 });
 
+// Show result
+
+const playerResult = document.querySelector('.player-result');
+const computerResult = document.querySelector('.computer-result');
+
+seeResult.addEventListener('click', () => {
+    playerResult.innerText = `Player: ${playerScore}`;
+    computerResult.innerText = `Computer: ${computerScore}`;
+
+    switchPage(playingInfo, result);
+});
+
+// Plays
 
 function playerPlay(button) {
     playerSelection = button.innerText.toLowerCase();
