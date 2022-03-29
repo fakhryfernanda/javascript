@@ -5,13 +5,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock-Paper-Scissors</title>
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <!-- <script src="game.js" defer></script> -->
 </head>
 <body>
-    <h2>Petunjuk</h2>
-    <ol>
-        <li>Buka console</li>
-        <li>Ketik "playGame()" kemudian tekan enter</li>
-    </ol>
+    <main>
+        <div class="container homepage">
+            <h1>Rock-Paper-Scissors</h1>
+            <!-- <img src=".images/logo.png" alt="Rock-Paper-Scissors Image"> -->
+            <div id="logo">Logo</div>
+            <div class="button start-button">Start Game</div>            
+        </div>
+
+        <div class="container select-rounds">
+            <h1>How many rounds do you want to play?</h1>
+            <div class="buttons">
+                <div class="button round-button">1 rounds</div>
+                <div class="button round-button">3 rounds</div>
+                <div class="button round-button">5 rounds</div>
+            </div>
+        </div>
+
+        <div class="container playing-page">
+            <h1 id="the-round">Round <span>1</span></h1>
+            <h1>What do you want to play?</h1>
+            <div class="buttons">
+                <div class="button play">Rock</a></div>
+                <div class="button play">Paper</a></div>
+                <div class="button play">Scissor</a></div>
+            </div>  
+        </div>
+
+        <div class="container playing-info"></div>
+
+        <div class="container result">
+            <h1>Result</h1>
+            <h1 class="player-result"></h1>
+            <h1 class="computer-result"></h1>
+            <div class="button"><a href="index.html">Play again</a></div>
+        </div>
+        
+    </main>
 </body>
 </html>

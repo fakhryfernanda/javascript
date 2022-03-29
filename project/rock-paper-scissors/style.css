@@ -1,0 +1,102 @@
+/* General styling */
+
+body {
+    height: 100vh;
+    margin: 0;
+    background-color: pink;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    border: 1px solid black;
+    padding: 20px 50px;
+}
+
+.container {
+    /* border: 1px solid blue; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.buttons {
+    display: flex;
+    gap: 50px;
+}
+
+.button {
+    background-color: red;
+    color: white;
+    font-size: 24px;
+    font-family: sans-serif;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+.button:active {
+    box-shadow: 0 0 5px -1px rgba(0,0,0,0.6);
+}
+
+/* HOMEPAGE */
+
+.homepage {
+    display: flex;
+}
+
+.homepage #logo {
+    width: 500px;
+    height: 300px;
+    border: 1px solid black;
+    font-size: 60px;
+    font-weight: bold;
+    font-family: sans-serif ;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.homepage .start-button {
+    /* font-size: 24px; */
+    font-family: sans-serif;
+    background-color: mediumseagreen;
+    color: white;
+    padding: 10px 30px;
+}
+
+/* SELECT ROUNDS */
+
+.select-rounds {
+    display: none;
+}
+
+/* PLAYING PAGE */
+
+.playing-page {
+    display: none;
+}
+
+/* PLAYING INFO */
+
+.playing-info {
+    display: none;
+}
+
+/* RESULT */
+
+.result {
+    display: none;
+}

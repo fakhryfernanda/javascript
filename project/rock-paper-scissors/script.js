@@ -1,116 +1,175 @@
-function playGame() {
+// Declare functions and elements
 
-    let numRound = prompt("How many round do you want to play?\n(must be greater than 0)");
+const switchPage = (currentPage, nextPage) => {
+    currentPage.style.display = 'none';
+    nextPage.style.display = 'flex';
+}
 
-    while (!(Number(numRound) > 0)) {
-        numRound = prompt("Insert a valid number\nHow many round do you want to play?\n(must be greater than 0)");
-        if (numRound === "quit" || numRound === null) {
-            return "Game exited";
-        }
-    }
+const showNumber = number => console.log(number);
 
-    numRound = Number(numRound);
+const main = document.querySelector('main');
+const homepage = document.querySelector('.homepage');
+const selectRounds = document.querySelector('.select-rounds');
+const playingPage = document.querySelector('.playing-page');
+const playingInfo = document.querySelector('.playing-info');
+const result = document.querySelector('.result');
 
-    let playerScore = 0;
-    let computerScore = 0;
+// Homepage
 
+startButton = document.querySelector('.start-button');
+startButton.addEventListener('click', () => switchPage(homepage, selectRounds));
+
+// Select rounds                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+
+const roundButtons = document.querySelectorAll('.round-button');
+let numRounds;
+roundButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        numRounds = Number(button.innerText[0]);
+        switchPage(selectRounds, playingPage)
+    });
+});
+
+// Playing page and playing info
+
+const plays = document.querySelectorAll('.playing-page .play');
+
+const nextRound = document.createElement('div')
+nextRound.setAttribute('class', 'button next-round');
+nextRound.innerText = 'Next round'
+
+const theRound = document.querySelector('.playing-page #the-round > span');
+
+const seeResult = document.createElement('div')
+seeResult.setAttribute('class', 'button see-result');
+seeResult.innerText = 'See result';
+
+let countRound = Number(theRound.innerText)
+let playerSelection;
+let computerSelection;
+
+plays.forEach(button => {
+    button.addEventListener('click', () => {
+        switchPage(playingPage, playingInfo);
+
+        playerPlay(button);
+
+        setTimeout(() => {
+            computerPlay();
+            setTimeout(() => {
+                evaluate(playerSelection, computerSelection);
+                setTimeout(() => {
+                    if (countRound < numRounds) {
+                        countRound++;
+                        theRound.innerText = countRound.toString();
+                        playingInfo.appendChild(nextRound);                            
+                    } else {
+                        playingInfo.appendChild(seeResult);
+                    }
+                }, 1000);
+            }, 1000);
+        }, 1000);
+    });
+});
+
+nextRound.addEventListener('click', () => {
+    switchPage(playingInfo, playingPage);
+    playingInfo.innerHTML = '';
+});
+
+// Show result
+
+const playerResult = document.querySelector('.player-result');
+const computerResult = document.querySelector('.computer-result');
+
+seeResult.addEventListener('click', () => {
+    playerResult.innerText = `Player: ${playerScore}`;
+    computerResult.innerText = `Computer: ${computerScore}`;
+
+    switchPage(playingInfo, result);
+});
+
+// Plays
+
+function playerPlay(button) {
+    playerSelection = button.innerText.toLowerCase();
+
+    const info = document.createElement('h1');
+    info.innerText = `Player plays ${playerSelection}`;
+    playingInfo.appendChild(info);
+}
+
+function computerPlay() {
     const options = ['rock', 'paper', 'scissor'];
+    const index = Math.floor(Math.random() * 3);
+    computerSelection = options[index];
 
-    function computerPlay() {
-        let index = Math.floor(Math.random() * 3);
-        return options[index];
-    }
+    const info = document.createElement('h1');
+    info.innerText = `Computer plays ${computerSelection}`;
+    playingInfo.appendChild(info);
+}
 
-    function playerWins() {
-        console.log("Player wins!");
-        playerScore++;
-    }
+// Game mechanics
 
-    function computerWins() {
-        console.log("Computer wins!");
-        computerScore++;
-    }
+const theWinner = document.createElement('h1');
 
-    function draw() {
-        console.log("Draw!")
-    }
+let playerScore = 0;
+let computerScore = 0;
 
-    function showThePlay(playerSelection, computerSelection) {
-        console.log(`Player plays ${playerSelection}`);
-        console.log(`Computer plays ${computerSelection}`);
-    }
+function playerWins() {
+    theWinner.innerText = 'Player wins';
+    playingInfo.appendChild(theWinner);
+    playerScore++;
+}
 
-    function evaluate(playerSelection, computerSelection) {
-        if (playerSelection == "rock") {
-            switch(computerSelection) {
-                case "rock" :
-                    draw();
-                    break;
-                case "paper" :
-                    computerWins();
-                    break;
-                case "scissor" :
-                    playerWins();
-                    break;
-            }
-        } else if (playerSelection == "paper") {
-            switch(computerSelection) {
-                case "rock" :
-                    playerWins();
-                    break;
-                case "paper" :
-                    draw();
-                    break;
-                case "scissor" :
-                    computerWins();
-                    break;
-            }
-        } else if (playerSelection == "scissor") {
-            switch(computerSelection) {
-                case "rock" :
-                    computerWins();
-                    break;
-                case "paper" :
-                    playerWins();
-                    break;
-                case "scissor" :
-                    draw();
-                    break;
-            }
+function computerWins() {
+    theWinner.innerText = 'Computer wins';playingInfo.appendChild(theWinner);
+    playingInfo.appendChild(theWinner);
+    computerScore++;
+}
+
+function draw() {
+    theWinner.innerText = 'Draw!';
+    playingInfo.appendChild(theWinner);
+
+}
+
+function evaluate(playerSelection, computerSelection) {
+    if (playerSelection == "rock") {
+        switch(computerSelection) {
+            case "rock" :
+                draw();
+                break;
+            case "paper" :
+                computerWins();
+                break;
+            case "scissor" :
+                playerWins();
+                break;
         }
-    }
-
-    function playRound(playerSelection, computerSelection) {
-        showThePlay(playerSelection, computerSelection);
-        evaluate(playerSelection, computerSelection);
-    }
-
-    function printScore(isCompleted = false) {
-        if (isCompleted) {
-            console.log("Final Score");
+    } else if (playerSelection == "paper") {
+        switch(computerSelection) {
+            case "rock" :
+                playerWins();
+                break;
+            case "paper" :
+                draw();
+                break;
+            case "scissor" :
+                computerWins();
+                break;
         }
-        console.log(`Player: ${playerScore}`);
-        console.log(`Computer: ${computerScore}`);
-    }
-    
-    for (let round = 1; round <= numRound; round++) {
-        let playerSelection = prompt("Your turn").toLowerCase();
-        let computerSelection = computerPlay();
-
-        console.log(`Round ${round}`);
-        playRound(playerSelection, computerSelection);
-        printScore();
-        console.log("\n");
-    }
-
-    printScore(isCompleted = true);
-    
-    // Determine the winner
-    if (playerScore > computerScore) {
-        return "You win!";
-    } else if (playerScore < computerScore) {
-        return "You lose!"
-    } else {
-        return "The game is tied"
+    } else if (playerSelection == "scissor") {
+        switch(computerSelection) {
+            case "rock" :
+                computerWins();
+                break;
+            case "paper" :
+                playerWins();
+                break;
+            case "scissor" :
+                draw();
+                break;
+        }
     }
 }
