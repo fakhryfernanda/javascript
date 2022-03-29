@@ -1,41 +1,64 @@
 body {
-    /* padding: 0 20vw; */
     height: 100vh;
     display: flex;
     align-items: center;
+
 }
 
-.container {
+.main {
     margin: 0 auto;
+    width: 500px;
     padding: 20px;
-    border: 1px solid red;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+    border: 1px solid saddlebrown;
 }
 
 .monitor {
     box-sizing: border-box;
-    width: 500px;
+    width: 100%;
     height: 100px;
-    border: 1px solid blue;
+    border: 1px solid red;
     border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.result {
+    align-self: flex-end;
+    font-size: 28px;
 }
 
 .controller {
-    box-sizing: border-box;
-    width: 500px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-areas: 
+        "seven eight nine divide"
+        "four five six multiply"
+        "one two three substract"
+        "ac zero equal add";
     gap: 10px;
-    /* border: 1px solid blue; */
 }
 
+#one {grid-area: one;}
+#two {grid-area: two;}
+#three {grid-area: three;}
+#four {grid-area: four;}
+#five {grid-area: five;}
+#six {grid-area: six;}
+#seven {grid-area: seven;}
+#eight {grid-area: eight;}
+#nine {grid-area: nine;}
+#zero {grid-area: zero;}
+#divide {grid-area: divide;}
+#multiply {grid-area: multiply;}
+#substract {grid-area: substract;}
+#add {grid-area: add;}
+#ac {grid-area: ac;}
+#equal {grid-area: equal;}
+
 .button {
-    /* box-sizing: border-box; */
-    width: 36px;
     padding: 10px 40px;
     border-radius: 10px;
     background-color: #DADCE0;
@@ -48,7 +71,7 @@ body {
     background-color: #f1f3f4;
 }
 
-#equal-to {
+#equal {
     background-color: blue;
     color: white;
 }
