@@ -15,8 +15,11 @@ main {
     padding: 20px 50px;
 }
 
-main h1 {
-    text-align: center;
+.container {
+    border: 1px solid blue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 a {
@@ -24,11 +27,17 @@ a {
     color: inherit;
 }
 
+.buttons {
+    display: flex;
+    gap: 50px;
+}
+
 .button {
     background-color: red;
     color: white;
     font-size: 24px;
     font-family: sans-serif;
+    text-align: center;
     padding: 10px 20px;
     border-radius: 10px;
 }
@@ -44,17 +53,7 @@ a {
 /* HOMEPAGE */
 
 .homepage {
-    visibility: visible;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-
-}
-
-.homepage h1 {
-    text-align: center;
 }
 
 .homepage #logo {
@@ -71,47 +70,27 @@ a {
 }
 
 .homepage .start-button {
-    text-align: center;
-    font-size: 24px;
+    /* font-size: 24px; */
     font-family: sans-serif;
-    background-color: red;
+    background-color: mediumseagreen;
     color: white;
     padding: 10px 30px;
-    border-radius: 10px;
 }
 
 /* SELECT ROUNDS */
-.select-rounds {
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-    
-}
 
-.select-rounds .rounds {
-    margin: 0;
-    background-color: red;
-    color: white;
-    font-size: 24px;
-    font-family: sans-serif;
-    padding: 10px 20px;
-    border-radius: 10px;
+.select-rounds {
+    display: none;
 }
 
 /* PLAYING PAGE */
 
 .playing-page {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
+    display: none;
 }
 
-.play {
-    margin: 0;
-    width: 100px;
-    text-align: center;
-}
+/* PLAYING INFO */
 
-.playing-page {
-    /* display: none; */
+.playing-info {
+    display: none;
 }
